@@ -1,0 +1,15 @@
+{
+    "prettier.configPath": ".prettier.config.mjs",
+    "prettier.requireConfig": true,
+    "files.autoSave": "afterDelay",
+    "editor.renderWhitespace": "none",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.multiCursorModifier": "alt",
+    "[javascript, typescript, JSON, HTML]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    
+}
