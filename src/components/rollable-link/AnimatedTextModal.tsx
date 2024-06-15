@@ -1,9 +1,9 @@
 'use client';
 import { ChangeEvent, useState } from 'react';
-import { Controls } from '../controls';
+import { ModalControls } from '../ModalControls';
 import { AnimatedText } from './AnimatedText';
 
-export const AnimatedTextModal = () => {
+export const AnimatedTextModal = (): JSX.Element => {
     const initialValue = 'HOVER ME OR CHANGE THE TEXT FIRST';
     const maxSymbols = 35;
     const [input, setInput] = useState(initialValue);
@@ -22,7 +22,7 @@ export const AnimatedTextModal = () => {
     return (
         <div className="text-black flex flex-col justify-center items-center w-full pt-8 gap-8">
             <AnimatedText title={input} />
-            <Controls
+            <ModalControls
                 maxSymbols={maxSymbols}
                 value={input}
                 handleChange={handleChange}

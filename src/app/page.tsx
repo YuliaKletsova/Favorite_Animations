@@ -1,10 +1,23 @@
-import { CssGrid } from '~/components/card';
-import { AnimatedLinkModal } from '~/components/rollable-link';
+import { CssGrid, CssGridData } from '~/components/card';
+import { RevealableTextModal } from '~/components/RevealableText';
+import { AnimatedTextModal } from '~/components/rollable-link';
 
-const animationsToShow = [
+const animationsToShow: CssGridData = [
     {
-        title: 'ROLLABLE LINK',
-        modalContent: <AnimatedLinkModal />,
+        title: 'ROLLABLE TEXT',
+        modalContent: <AnimatedTextModal />,
+    },
+    {
+        title: 'REVEALABLE TEXT',
+        modalContent: <RevealableTextModal />,
+    },
+    {
+        title: 'tmp1',
+        modalContent: <div>tmp1</div>,
+    },
+    {
+        title: 'tmp2',
+        modalContent: <div>tmp2</div>,
     },
 ];
 

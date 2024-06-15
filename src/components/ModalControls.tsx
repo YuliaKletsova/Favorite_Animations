@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-export const Controls = ({
+export const ModalControls = ({
     maxSymbols,
     handleChange,
     handleReset,

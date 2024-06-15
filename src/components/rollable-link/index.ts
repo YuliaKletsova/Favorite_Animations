@@ -1,1 +1,1 @@
-export * from './AnimatedLinkModal';
+export * from './AnimatedTextModal';
