@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AnimatedWord } from './AnimatedWord';
 
@@ -20,7 +20,14 @@ export const AnimatedText = ({ title }: { title: string }) => {
         <motion.span
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="text-midnight font-semibold overflow-hidden relative text-2xl"
+            style={{
+                position: 'relative',
+                fontSize: '1.5rem',
+                lineHeight: '2rem',
+                fontWeight: 600,
+                color: '#6C3BC1',
+                overflow: 'hidden',
+            }}
         >
             <div>
                 <AnimatedWord
@@ -38,7 +45,7 @@ export const AnimatedText = ({ title }: { title: string }) => {
                     titleTransition={titleTransition}
                 />
             </div>
-            <div className="absolute top-0">
+            <div style={{ position: 'absolute', top: 0 }}>
                 <AnimatedWord
                     title={title}
                     animation={{

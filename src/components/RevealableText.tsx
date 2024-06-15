@@ -1,9 +1,8 @@
 'use client';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ModalControls } from './ModalControls';
 
-const RevealableText = ({ text }: { text: string[] }) => {
+export const RevealableText = ({ text }: { text: string[] }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -13,49 +12,24 @@ const RevealableText = ({ text }: { text: string[] }) => {
         >
             {text.map((el, i) => (
                 <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={isHovered ? { opacity: 1 } : undefined}
+                    initial={{ opacity: 1 }}
+                    animate={isHovered ? { opacity: 0 } : undefined}
                     transition={{
-                        duration: 0.25,
+                        duration: 0.15,
                         delay: i / 10,
+                        type: 'spring',
                     }}
                     key={i}
+                    style={{
+                        fontSize: '1.5rem',
+                        lineHeight: '2rem',
+                        fontWeight: 600,
+                        color: '#6C3BC1',
+                    }}
                 >
                     {el}
                 </motion.span>
             ))}
-        </div>
-    );
-};
-
-export const RevealableTextModal = () => {
-    const initialValue = 'HOVER ME OR CHANGE THE TEXT FIRST';
-    const maxSymbols = 35;
-    const [input, setInput] = useState(initialValue);
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        if (value.length <= maxSymbols) {
-            setInput(value);
-        } else {
-            setInput(value.slice(0, maxSymbols));
-        }
-    };
-
-    const handleReset = () => setInput(initialValue);
-
-    return (
-        <div className="text-black flex flex-col justify-center items-center w-full pt-8 gap-8">
-            <div className="flex border-dashed border-2 border-midnight p-4 text-midnight text-2xl">
-                <RevealableText text={input.split('')} />
-            </div>
-            <ModalControls
-                maxSymbols={maxSymbols}
-                value={input}
-                handleChange={handleChange}
-                handleReset={handleReset}
-                isDisabled={initialValue === input}
-            />
         </div>
     );
 };

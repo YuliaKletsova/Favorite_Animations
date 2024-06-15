@@ -1,43 +1,51 @@
+import { useMemo } from 'react';
 import { Animations } from '~/constants';
-import { RevealableTextModal } from '../RevealableText';
-import { AnimatedTextModal } from '../rollable-link';
+import { RevealableText } from '../RevealableText';
+import { AnimatedText } from '../rollable-link';
 
 export type CssGridData = {
     title: string;
-    modalContent: JSX.Element;
+    content: JSX.Element;
     type?: Animations;
-    col?: string;
+    colSpan: number;
 }[];
 
-export const useGetCardsContent = (): CssGridData => [
-    {
-        title: 'ROLLABLE TEXT',
-        modalContent: <AnimatedTextModal />,
-        col: `col-span-${Math.floor(Math.random() * 3) + 1}`,
-    },
-    {
-        title: 'REVEALABLE TEXT',
-        modalContent: <RevealableTextModal />,
-        col: `col-span-${Math.floor(Math.random() * 3) + 1}`,
-    },
-    {
-        title: 'tmp1',
-        modalContent: <div>tmp1</div>,
-        col: `col-span-${Math.floor(Math.random() * 3) + 1}`,
-    },
-    {
-        title: 'tmp2',
-        modalContent: <div>tmp2</div>,
-        col: `col-span-${Math.floor(Math.random() * 3) + 1}`,
-    },
-    {
-        title: 'tmp3',
-        modalContent: <div>tmp3</div>,
-        col: `col-span-${Math.floor(Math.random() * 3) + 1}`,
-    },
-    {
-        title: 'tmp4',
-        modalContent: <div>tmp4</div>,
-        col: `col-span-${Math.floor(Math.random() * 3) + 1}`,
-    },
-];
+export const useGetCardsContent = (): CssGridData => {
+    const cardsContent = useMemo(
+        () => [
+            {
+                title: 'ROLLABLE TEXT',
+                content: <AnimatedText title="ROLLABLE TEXT" />,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+            {
+                title: 'REVEALABLE TEXT',
+                content: <RevealableText text={'REVEALABLE TEXT'.split('')} />,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+            {
+                title: 'tmp1',
+                content: <div>tmp1</div>,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+            {
+                title: 'tmp2',
+                content: <div>tmp2</div>,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+            {
+                title: 'tmp3',
+                content: <div>tmp3</div>,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+            {
+                title: 'tmp4',
+                content: <div>tmp4</div>,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+        ],
+        []
+    );
+
+    return cardsContent;
+};

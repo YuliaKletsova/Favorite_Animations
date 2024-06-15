@@ -1,9 +1,17 @@
+import '../../styles/global.css';
+import { Flex } from '@chakra-ui/react';
 import { CssGrid } from '~/components/card';
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center p-24">
+        <Flex
+            direction="column"
+            align="center"
+            justify="center"
+            padding="6rem"
+            minHeight="100vh"
+        >
             <CssGrid />
-        </main>
+        </Flex>
     );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Oswald } from 'next/font/google';
-import './globals.css';
+import { ChakraProvider } from '@chakra-ui/react';
 
 const oswald = Oswald({ subsets: ['latin'] });
 
@@ -19,7 +19,9 @@ export default function RootLayout({
             <head>
                 <link rel="icon" href="/favicon.png" type="image/gif" />
             </head>
-            <body className={oswald.className}>{children}</body>
+            <body className={oswald.className} id="body">
+                <ChakraProvider>{children}</ChakraProvider>
+            </body>
         </html>
     );
 }
