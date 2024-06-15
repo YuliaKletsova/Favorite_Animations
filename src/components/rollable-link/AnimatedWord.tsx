@@ -23,7 +23,7 @@ export const AnimatedWord = ({
             }}
             initial="rest"
             animate={isHovered ? 'hover' : 'rest'}
-            className="relative"
+            style={{ position: 'relative' }}
         >
             {title.split('').map((character, i) =>
                 character === ' ' ? (
@@ -32,7 +32,10 @@ export const AnimatedWord = ({
                     <motion.span
                         key={i}
                         variants={animation}
-                        className="relative inline-block"
+                        style={{
+                            position: 'relative',
+                            display: 'inline-block',
+                        }}
                     >
                         {character}
                     </motion.span>

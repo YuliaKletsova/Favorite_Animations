@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AnimatedWord } from './AnimatedWord';
 
@@ -13,21 +13,21 @@ const titleTransition = {
     staggerChildren: 0.03,
 };
 
-export const AnimatedLink = ({
-    title,
-    href,
-}: {
-    title: string;
-    href: string;
-}) => {
+export const AnimatedText = ({ title }: { title: string }) => {
     const [isHovered, setHovered] = useState(false);
 
     return (
-        <motion.a
+        <motion.span
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="text-midnight font-semibold overflow-hidden relative text-2xl"
-            href={href}
+            style={{
+                position: 'relative',
+                fontSize: '1.5rem',
+                lineHeight: '2rem',
+                fontWeight: 600,
+                color: '#6C3BC1',
+                overflow: 'hidden',
+            }}
         >
             <div>
                 <AnimatedWord
@@ -45,7 +45,7 @@ export const AnimatedLink = ({
                     titleTransition={titleTransition}
                 />
             </div>
-            <div className="absolute top-0">
+            <div style={{ position: 'absolute', top: 0 }}>
                 <AnimatedWord
                     title={title}
                     animation={{
@@ -61,6 +61,6 @@ export const AnimatedLink = ({
                     titleTransition={titleTransition}
                 />
             </div>
-        </motion.a>
+        </motion.span>
     );
 };
