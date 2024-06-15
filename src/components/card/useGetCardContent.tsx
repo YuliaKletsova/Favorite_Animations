@@ -3,6 +3,7 @@ import { Animations } from '~/constants';
 import { RevealableText } from '../RevealableText';
 import { AnimatedText } from '../rollable-link';
 import { BorderedButton } from '../BorderedButton';
+import { NotFound } from '../NotFound';
 
 export type CssGridData = {
     content: JSX.Element;
@@ -26,8 +27,8 @@ export const useGetCardsContent = (): CssGridData => {
                 colSpan: Math.floor(Math.random() * 3) + 1,
             },
             {
-                content: <div>tmp2</div>,
-                colSpan: Math.floor(Math.random() * 3) + 1,
+                content: <NotFound />,
+                colSpan: 1,
             },
             {
                 content: <div>tmp3</div>,
