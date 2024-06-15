@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { COLORS } from '~/constants';
 
 export const RevealableText = ({ text }: { text: string[] }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -24,7 +25,7 @@ export const RevealableText = ({ text }: { text: string[] }) => {
                         fontSize: '1.5rem',
                         lineHeight: '2rem',
                         fontWeight: 600,
-                        color: '#6C3BC1',
+                        color: COLORS.violet,
                     }}
                 >
                     {el}
