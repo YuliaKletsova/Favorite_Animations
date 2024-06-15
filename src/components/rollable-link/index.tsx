@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { COLORS } from '~/constants';
 import { AnimatedWord } from './AnimatedWord';
 
 const transition = {
@@ -25,7 +26,7 @@ export const AnimatedText = ({ title }: { title: string }) => {
                 fontSize: '1.5rem',
                 lineHeight: '2rem',
                 fontWeight: 600,
-                color: '#6C3BC1',
+                color: COLORS.violet,
                 overflow: 'hidden',
             }}
         >
