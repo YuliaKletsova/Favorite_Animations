@@ -7,6 +7,7 @@ export type CssGridData = {
     title: string;
     modalContent: JSX.Element;
     type?: Animations;
+    colClass?: string;
 }[];
 
 export const CssGrid = ({ data }: { data: CssGridData }) => {
@@ -16,22 +17,18 @@ export const CssGrid = ({ data }: { data: CssGridData }) => {
 
     return (
         <>
-            <div className="w-full grid grid-cols-4 auto-rows-[100px] gap-4 my-10 ">
-                {data.map(({ title }, i) => {
-                    const random = Math.floor(Math.random() * 3) + 1;
-
-                    return (
-                        <div
-                            key={i}
-                            className={`${boxStyle} md:col-span-${random}`}
-                            onClick={() => setActiveItem(i)}
-                        >
-                            <div className="text-xl text-midnight font-semibold">
-                                {title}
-                            </div>
+            <div className="w-full grid grid-cols-4 grid-flow-row auto-rows-[100px] gap-4 my-10 ">
+                {data.map(({ title, colClass }, i) => (
+                    <div
+                        key={i}
+                        className={`${boxStyle} ${colClass}`}
+                        onClick={() => setActiveItem(i)}
+                    >
+                        <div className="text-xl text-midnight font-semibold">
+                            {title}
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
             </div>
 
             <Modal
