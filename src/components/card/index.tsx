@@ -36,14 +36,6 @@ export const CssGrid = () => {
                 content: <NotFound />,
                 colSpan: 1,
             },
-            {
-                content: <div>tmp3</div>,
-                colSpan: Math.floor(Math.random() * 3) + 1,
-            },
-            {
-                content: <div>tmp4</div>,
-                colSpan: Math.floor(Math.random() * 3) + 1,
-            },
         ]);
     }, []);
 
