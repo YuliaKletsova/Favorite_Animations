@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { CSSProperties, useState } from 'react';
 import { motion } from 'framer-motion';
 import { COLORS } from '~/constants';
 import { AnimatedWord } from './AnimatedWord';
@@ -14,19 +14,29 @@ const titleTransition = {
     staggerChildren: 0.03,
 };
 
-export const AnimatedText = ({ title }: { title: string }) => {
+export const RollingUpDown = ({
+    title,
+    style,
+}: {
+    title: string;
+    style?: CSSProperties;
+}) => {
     const [isHovered, setHovered] = useState(false);
+    const diff = style?.fontSize
+        ? parseInt(String(style?.fontSize), 10) + 50
+        : 50;
 
     return (
         <motion.span
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             style={{
-                position: 'relative',
                 fontSize: '1.5rem',
                 lineHeight: '2rem',
                 fontWeight: 600,
                 color: COLORS.violet,
+                ...(style ? style : {}),
+                position: 'relative',
                 overflow: 'hidden',
             }}
         >
@@ -38,7 +48,7 @@ export const AnimatedText = ({ title }: { title: string }) => {
                             y: 0,
                         },
                         hover: {
-                            y: -30,
+                            y: -diff,
                             transition,
                         },
                     }}
@@ -51,7 +61,7 @@ export const AnimatedText = ({ title }: { title: string }) => {
                     title={title}
                     animation={{
                         rest: {
-                            y: 30,
+                            y: diff,
                         },
                         hover: {
                             y: 0,

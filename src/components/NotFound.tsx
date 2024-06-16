@@ -1,4 +1,5 @@
-import { useState } from 'react';
+'use client';
+import { SVGProps, useState } from 'react';
 import { motion } from 'framer-motion';
 import { COLORS } from '~/constants';
 
@@ -18,24 +19,33 @@ const pathVariants = {
     },
 };
 
-export const NotFound = () => {
+export const NotFound = ({
+    width,
+    height,
+    strokeWidth,
+    strokeLinecap,
+    stroke,
+}: Pick<
+    SVGProps<SVGSVGElement>,
+    'width' | 'height' | 'strokeWidth' | 'strokeLinecap' | 'stroke'
+>) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
         <motion.svg
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            width="150"
-            height="200"
+            width={width || '150'}
+            height={height || '200'}
             viewBox="0 0 454 250"
-            strokeWidth="10"
-            stroke={COLORS.violet}
+            strokeWidth={strokeWidth || '10'}
+            strokeLinecap={strokeLinecap || 'round'}
+            stroke={stroke || COLORS.violet}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
             <motion.path
                 d="M89.9778 228V9L11 156H136.089"
-                strokeLinecap="round"
                 variants={pathVariants}
                 initial="visible"
                 animate={isHovered ? 'hidden' : ''}
@@ -48,7 +58,6 @@ export const NotFound = () => {
             />
             <motion.path
                 d="M404.659 228V9L327 156H450"
-                strokeLinecap="round"
                 variants={pathVariants}
                 initial="visible"
                 animate={isHovered ? 'hidden' : ''}
