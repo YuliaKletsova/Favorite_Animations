@@ -1,10 +1,51 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
-import { useGetCardsContent } from './useGetCardContent';
+import { Animations } from '~/constants';
+import { RevealableText } from '../RevealableText';
+import { RollingUpDown } from '../rollable';
+import { BorderedButton } from '../BorderedButton';
+import { NotFound } from '../NotFound';
+
+type CssGridData = {
+    content: JSX.Element;
+    type?: Animations;
+    colSpan: number;
+}[];
 
 export const CssGrid = () => {
-    const animations = useGetCardsContent();
+    const [animations, setAnimations] = useState<CssGridData>([]);
+
+    useEffect(() => {
+        setAnimations([
+            {
+                content: <RollingUpDown title="ROLLABLE TEXT" />,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+            {
+                content: (
+                    <RevealableText text="REVEALABLE TEXT" type="symbol" />
+                ),
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+            {
+                content: <BorderedButton text={'YOU SPIN ME RIGHT ROUND...'} />,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+            {
+                content: <NotFound />,
+                colSpan: 1,
+            },
+            {
+                content: <div>tmp3</div>,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+            {
+                content: <div>tmp4</div>,
+                colSpan: Math.floor(Math.random() * 3) + 1,
+            },
+        ]);
+    }, []);
 
     return (
         <Grid

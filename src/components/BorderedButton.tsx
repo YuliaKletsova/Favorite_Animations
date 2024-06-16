@@ -1,7 +1,15 @@
+'use client';
+import { CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import { COLORS } from '~/constants';
 
-export const BorderedButton = () => (
+export const BorderedButton = ({
+    text,
+    style,
+}: {
+    text: string;
+    style?: CSSProperties;
+}) => (
     <motion.div
         initial={{
             backgroundImage: `linear-gradient(to right, white, white), linear-gradient(0deg, ${COLORS.violet}, white 40%)`,
@@ -16,17 +24,17 @@ export const BorderedButton = () => (
             repeat: Infinity,
         }}
         style={{
-            border: '3px solid transparent',
-            borderRadius: '20px',
-            backgroundClip: 'padding-box, border-box',
-            backgroundOrigin: 'padding-box, border-box',
-            width: 160,
-            height: 40,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            padding: '20px',
+            borderRadius: '20px',
+            ...(style ? style : {}),
+            border: `3px solid transparent`,
+            backgroundClip: 'padding-box, border-box',
+            backgroundOrigin: 'padding-box, border-box',
         }}
     >
-        WOW, I`m animated
+        {text}
     </motion.div>
 );
